@@ -5,7 +5,7 @@ from django.db import models
 class React(models.Model):
     name = models.CharField(max_length=100)
     desc = models.TextField(max_length=3000)
-    image = models.ImageField()
+    image = models.ImageField(upload_to=".\images")
     
     FRESHMAN = 'FR'
     SOPHOMORE = 'SO'
