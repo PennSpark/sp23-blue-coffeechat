@@ -11,7 +11,7 @@ class App extends React.Component {
   
         let data ;
   
-        axios.get('http://localhost:8000/profile/')
+        axios.get('http://127.0.0.1:8000/profile/')
         .then(res => {
             data = res.data;
             this.setState({
