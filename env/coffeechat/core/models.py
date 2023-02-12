@@ -5,13 +5,13 @@ from django.db import models
 class React(models.Model):
     name = models.CharField(max_length=100)
     desc = models.TextField(max_length=3000)
-    image = models.ImageField(upload_to=".\images")
+    # image = models.ImageField(upload_to=".\images")
     
-    FRESHMAN = 'FR'
-    SOPHOMORE = 'SO'
-    JUNIOR = 'JR'
-    SENIOR = 'SR'
-    GRADUATE = 'GR'
+    FRESHMAN = 'Freshman'
+    SOPHOMORE = 'Sophomore'
+    JUNIOR = 'Junior'
+    SENIOR = 'Senior'
+    GRADUATE = 'Graduate'
     YEAR_CHOICES = [
         (FRESHMAN, 'Freshman'),
         (SOPHOMORE, 'Sophomore'),
@@ -20,7 +20,7 @@ class React(models.Model):
         (GRADUATE, 'Graduate'),
     ]
     year = models.CharField(
-        max_length=2,
+        max_length=9,
         choices=YEAR_CHOICES,
         default=FRESHMAN,
     )

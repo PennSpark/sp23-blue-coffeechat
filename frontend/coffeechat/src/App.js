@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './App.css';
   
 class App extends React.Component {
   
@@ -27,11 +28,13 @@ class App extends React.Component {
             {this.state.profiles.map((profile, id) =>  (
             <div key={id}>
             <div >
-                  <div >
-                        <h1>{profile.name} </h1>
-                        {profile.desc}
-                        {profile.image}
-                        {profile.year}
+                  <div>
+                        <div className="profile-intro"><p><span>{profile.name}</span> - {profile.year}</p></div>
+
+                        <p>{profile.desc}</p>
+
+                        <p>{profile.image}</p>
+
                   </div>
             </div>
             </div>
