@@ -11,7 +11,7 @@ class ReactView(APIView):
   
     def get(self, request):
         # profile = [ {"name": profile.name, "desc": profile.desc, "image": profile.image, "year": profile.year} 
-        profile = [ {"name": profile.name, "desc": profile.desc, "year": profile.year} 
+        profile = [ {"email": profile.email, "name": profile.name, "desc": profile.desc, "year": profile.year} 
 
         for profile in React.objects.all()]
         return Response(profile)

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import {Link} from "react-router-dom"
   
 class App extends React.Component {
   
@@ -24,23 +25,10 @@ class App extends React.Component {
   
   render() {
     return(
-      <div>
-            {this.state.profiles.map((profile, id) =>  (
-            <div key={id}>
-            <div >
-                  <div>
-                        <div className="profile-intro"><p><span>{profile.name}</span> - {profile.year}</p></div>
-
-                        <p>{profile.desc}</p>
-
-                        <p>{profile.image}</p>
-
-                  </div>
-            </div>
-            </div>
-            )
-        )}
-      </div>
+        <div>
+        <h1>Welcome to Coffeechat</h1>
+        <Link to="/profile">Profile</Link>
+        </div>
       );
   }
 }
