@@ -5,23 +5,23 @@ import {Link} from "react-router-dom"
   
 class App extends React.Component {
   
-    state = {
-        profiles : [],
-    }
+    // state = {
+    //     profiles : [],
+    // }
   
-    componentDidMount() {
+    // componentDidMount() {
   
-        let data ;
+    //     let data ;
   
-        axios.get('http://127.0.0.1:8000/profile/')
-        .then(res => {
-            data = res.data;
-            this.setState({
-                profiles : data    
-            });
-        })
-        .catch(err => {})
-    }
+    //     axios.get('http://127.0.0.1:8000/profile/')
+    //     .then(res => {
+    //         data = res.data;
+    //         this.setState({
+    //             profiles : data    
+    //         });
+    //     })
+    //     .catch(err => {})
+    // }
   
   render() {
     return(

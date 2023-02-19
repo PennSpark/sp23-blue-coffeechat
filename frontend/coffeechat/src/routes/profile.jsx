@@ -1,21 +1,37 @@
-export default function Profile() {
-    return (
-        <div>
-            {this.state.profiles.map((profile, id) =>  (
-            <div key={id}>
-            <div >
-                    <div>
-                        <div className="profile-intro"><p><span>{profile.name}</span> - {profile.year}</p></div>
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-                        <p>{profile.desc}</p>
+function Profile() {
+  const [profiles, setProfiles] = useState([]);
 
-                        <p>{profile.image}</p>
+  useEffect(() => {
+    axios
+      .get('http://127.0.0.1:8000/profile/')
+      .then((res) => {
+        setProfiles(res.data);
+      })
+      .catch((err) => {});
+  }, []);
 
-                    </div>
+  return (
+    <div>
+      {profiles.map((profile, id) => (
+        <div key={id}>
+          <div>
+            <div className="profile-intro">
+              <p>
+                <span>{profile.name}</span> - {profile.year}
+              </p>
             </div>
-            </div>
-            )
-        )}
+
+            <p>{profile.desc}</p>
+
+            <p>{profile.image}</p>
+          </div>
         </div>
-    );
+      ))}
+    </div>
+  );
 }
+
+export default Profile;
