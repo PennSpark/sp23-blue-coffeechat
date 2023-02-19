@@ -1,3 +1,5 @@
+import './styles/makeprofile.css'
+
 function MakeProfile() {
     return(
         // This is the make profile page.

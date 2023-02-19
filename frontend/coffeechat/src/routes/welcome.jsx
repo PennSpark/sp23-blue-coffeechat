@@ -1,3 +1,6 @@
+import {Link} from "react-router-dom"
+import './styles/welcome.css'
+
 function Welcome() {
     return(
         // This is the welcome page.

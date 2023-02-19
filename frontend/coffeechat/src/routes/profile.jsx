@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom"
+import './styles/profile.css'
 
 function Profile() {
   const [profiles, setProfiles] = useState([]);
@@ -14,24 +16,26 @@ function Profile() {
   }, []);
 
   return (
+    <>
     <div><p>Profiles</p></div>
-    // <div>
-    //   {profiles.map((profile, id) => (
-    //     <div key={id}>
-    //       <div>
-    //         <div className="profile-intro">
-    //           <p>
-    //             <span>{profile.name}</span> - {profile.year}
-    //           </p>
-    //         </div>
+    {/* <div>
+      {profiles.map((profile, id) => (
+        <div key={id}>
+          <div>
+            <div className="profile-intro">
+              <p>
+                <span>{profile.name}</span> - {profile.year}
+              </p>
+            </div>
 
-    //         <p>{profile.desc}</p>
+            <p>{profile.desc}</p>
 
-    //         <p>{profile.image}</p>
-    //       </div>
-    //     </div>
-    //   ))}
-    // </div>
+            <p>{profile.image}</p>
+          </div>
+        </div>
+      ))}
+    </div> */}
+    </>
   );
 }
 
