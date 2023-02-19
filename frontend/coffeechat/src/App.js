@@ -27,6 +27,7 @@ class App extends React.Component {
     return(
         <div>
         <h1>Welcome to Coffeechat</h1>
+        <h2>kai</h2>
         <Link to="/profile">Profile</Link>
         </div>
       );
