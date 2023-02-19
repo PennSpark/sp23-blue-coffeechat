@@ -14,23 +14,23 @@ function Profile() {
   }, []);
 
   return (
-    <div>
-      {profiles.map((profile, id) => (
-        <div key={id}>
-          <div>
-            <div className="profile-intro">
-              <p>
-                <span>{profile.name}</span> - {profile.year}
-              </p>
-            </div>
+    // <div>
+    //   {profiles.map((profile, id) => (
+    //     <div key={id}>
+    //       <div>
+    //         <div className="profile-intro">
+    //           <p>
+    //             <span>{profile.name}</span> - {profile.year}
+    //           </p>
+    //         </div>
 
-            <p>{profile.desc}</p>
+    //         <p>{profile.desc}</p>
 
-            <p>{profile.image}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+    //         <p>{profile.image}</p>
+    //       </div>
+    //     </div>
+    //   ))}
+    // </div>
   );
 }
 
