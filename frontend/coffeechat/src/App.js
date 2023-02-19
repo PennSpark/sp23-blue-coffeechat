@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import {Link} from "react-router-dom"
+import Welcome from "./routes/welcome"
   
 class App extends React.Component {
   
@@ -26,7 +27,7 @@ class App extends React.Component {
   render() {
     return(
         <div>
-        <h1>Welcome to Coffeechat</h1>
+        <Welcome/>
         <Link to="/profile">Profile</Link>
         </div>
       );

@@ -14,6 +14,7 @@ function Profile() {
   }, []);
 
   return (
+    <div><p>Profiles</p></div>
     // <div>
     //   {profiles.map((profile, id) => (
     //     <div key={id}>
