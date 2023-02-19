@@ -8,6 +8,8 @@ import {BrowserRouter,
         Route
 } from "react-router-dom"
 import Profile from "./routes/profile";
+import Login from "./routes/login"
+import Signup from "./routes/signup"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +18,8 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}/>
         <Route path="/profile" element={<Profile />}/>
+        <Route path="/signup" element={<Signup />}/>
+        <Route path="/login" element={<Login />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
