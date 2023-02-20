@@ -1,38 +1,61 @@
 .signup-button {
     transition-duration: 0.2s;
     border-radius: 12px;
-    background-color: black;
-    color: white;
-    border: 4px solid black;
-
+    background-color: #2f2017;
+    color: #fae9e0;
+    border: 4px solid #2f2017;
     font-family: 'Work Sans', sans-serif;
-    font-size: 1.3em;
+    font-size: 2em;
+    margin-top: 0.1em;
+    padding: 6px;
+    padding-left: 10px;
+    padding-right: 10px
 }
 
 .signup-button:hover {
-    background-color: white;
-    color: black;
-    border: 4px solid black;
+    background-color: #070504;
+    color: #fae9e0;
+    border: 4px solid #070504;
 }
 
 .subtitle {
+    color: #1b130e;
+    margin-top: -0.8em;
     font-family: 'Work Sans', sans-serif;
     font-size: 2em;
     font-style: bold;
+    text-align: left;
 }
 
 .welcome-container {
+    background-color: #d0ae8b;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: flex-start;
     width: 100vw;
     height: 100vh;
-    padding: 20vh;
+    padding-left: 10vh;
+    padding-top: 15vh;
+
 }
 
 .welcome-title {
+    color: #2f2017;
     font-family: 'Lilita One', cursive;
-    font-size: 4.5vw;
-    text-align: center;
+    font-size: 4vw;
+    text-align: left;
+    /* text-shadow: -1px 1px 0 rgba(0, 0, 0, 1); */
+}
+
+.welcome-title span {
+    font-size: 5.5vw;
+}
+
+.welcome-title span span {
+    font-size: 6vw;
+}
+
+.welcome-title::before {
+    text-shadow: -1px 0 0 rgba(0, 0, 0, .2);   
 }

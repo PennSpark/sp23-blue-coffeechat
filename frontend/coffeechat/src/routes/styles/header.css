@@ -1,0 +1,19 @@
+header {
+    color: #fae9e0;
+    position: fixed;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.3vw;
+    top: 0;
+    width: 100vw;
+    background-color: #221711;
+    padding: 1.8vh;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+  }
+
+.brand-name {
+    color: #fae9e0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: start; 
+}

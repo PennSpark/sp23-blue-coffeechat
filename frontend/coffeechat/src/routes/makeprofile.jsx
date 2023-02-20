@@ -1,11 +1,14 @@
 import './styles/makeprofile.css'
+import Header from "./header"
 
 function MakeProfile() {
     return(
         // This is the make profile page.
-        <div>
+        <>
+        <body>
             <h1>Make a profile on Coffeechat</h1>
-        </div>
+        </body>
+        </>
     );
 }
 
