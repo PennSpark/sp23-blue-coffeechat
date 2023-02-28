@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'coffeechat.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {

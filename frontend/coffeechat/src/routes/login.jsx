@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom"
 import './styles/login.css'
 import Header from "./header"
+import CSRFToken from "./csrftoken"
 
 function Login() {
     return(
@@ -17,7 +18,13 @@ function Login() {
             <body>
             <Header/>
             <div className="login-container">
-                <h1>Login to Coffeechat</h1>
+                <h1 className="login-title">login</h1> 
+                <form method="POST" action="login/" className="login-form">
+                    <CSRFToken />
+                    <input name="email" type="text" placeholder="Enter Penn Email"/>
+                    <input name="password" type="password" placeholder="Enter Password"/>
+                    <button type="submit" className="login-button">log in</button>
+                </form>
                 <Link to="/signup">Don't have an account yet? Sign up here.</Link>
             </div>
             </body>
