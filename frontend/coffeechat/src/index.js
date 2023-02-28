@@ -10,6 +10,7 @@ import {BrowserRouter,
 import Profile from "./routes/profile";
 import Login from "./routes/login"
 import Signup from "./routes/signup"
+import Header from './routes/header';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
