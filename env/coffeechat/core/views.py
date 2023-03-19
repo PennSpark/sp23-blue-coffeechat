@@ -5,6 +5,10 @@ from rest_framework.views import APIView
 from . models import *
 from rest_framework.response import Response
 from . serializer import *
+from django.views.decorators.csrf import csrf_exempt
+
+import json
+from django.http import JsonResponse
 
 class ReactView(APIView):
     
@@ -24,14 +28,21 @@ class ReactView(APIView):
             serializer.save()
             return Response(serializer.data)
 
+@csrf_exempt
 def login_view(request): 
     email, password = request.POST['email'], request.POST['password'] 
     user = authenticate(email=email, password=password) 
-    if user is not None: 
-        login(request, user) 
-        return redirect('http://localhost:3000/profile') 
+    print(email)
+    print(password)
+    return JsonResponse({'foo':'bar'})
+    """if True:
+    #if user is not None: 
+        #login(request, user) 
+        #return redirect('http://localhost:3000/profile') 
+        #return redirect('https://localhost:3000')
+        return 
     else: 
-        return redirect('http://localhost:3000/login?error=LoginError')
+        return redirect('http://localhost:3000/login?error=LoginError')"""
     
 def signup_view(request):
     user = User.objects_create_user(

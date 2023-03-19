@@ -18,7 +18,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name="admin"),
     path('profile/', ReactView.as_view(), name="welcome"),
     path('login/', login_view, name="login_view"),
     path('logout/', logout_view, name="logout_view"),
