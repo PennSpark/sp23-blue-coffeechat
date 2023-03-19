@@ -9,7 +9,7 @@ function Signup() {
         <Header/>
         <body>
             <h1>Sign up for Coffeechat</h1>
-            <Link to="/login">Already have an account? Sign up here.</Link>
+            <Link to="/login">Already have an account? Log in here.</Link>
         </body>
         </>
     );

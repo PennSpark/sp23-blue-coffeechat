@@ -29,9 +29,9 @@ def login_view(request):
     user = authenticate(email=email, password=password) 
     if user is not None: 
         login(request, user) 
-        return redirect('/profile') 
+        return redirect('http://localhost:3000/profile') 
     else: 
-        return redirect('/login?error=LoginError')
+        return redirect('http://localhost:3000/login?error=LoginError')
     
 def signup_view(request):
     user = User.objects_create_user(

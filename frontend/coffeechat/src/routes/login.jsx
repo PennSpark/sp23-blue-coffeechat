@@ -19,8 +19,7 @@ function Login() {
             <Header/>
             <div className="login-container">
                 <h1 className="login-title">login</h1> 
-                <form method="POST" action="login/" className="login-form">
-                    <CSRFToken />
+                <form method="POST" action="http://localhost:8000/login/" className="login-form">
                     <input name="email" type="text" placeholder="Enter Penn Email"/>
                     <input name="password" type="password" placeholder="Enter Password"/>
                     <button type="submit" className="login-button">log in</button>
