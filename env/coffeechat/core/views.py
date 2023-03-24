@@ -33,26 +33,25 @@ def login_view(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
     user = authenticate(email=email, password=password) 
-    # print(email)
-    # print(password)
     if user is not None: 
         login(request, user)
         return JsonResponse({"success": "True"})
     else: 
         return JsonResponse({"success": "False"})
     
+@csrf_exempt
 def signup_view(request):
     user = User.objects_create_user(
         email = request.POST("email"),
         password = request.POST("password")
     )
     if len(request.POST("password")) < 8:
-        return redirect('api/signup?error=InvalidPassword')
+        return JsonResponse({"acctStatus": "InvalidPassword"})
     elif request.POST[-9:] != "upenn.edu":
-        return redirect('api/signup?error=InvalidEmail')
+        return JsonResponse({"acctStatus": "InvalidEmail"})
     else:
         login(request, user)
-        return redirect('api/makeprofile')
+        return JsonResponse({"acctStatus": "success"})
     
 def logout_view(request):
     logout(request)

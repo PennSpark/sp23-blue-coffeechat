@@ -15,7 +15,6 @@ function Login() {
       try {
         const response = await axios.post('http://localhost:8000/api/login/', { email, password });
         const success = response.data.success;
-        console.log(success)
         if (success == "True") {
           navigate("/profile")
         } else {
@@ -40,11 +39,11 @@ function Login() {
               rel="stylesheet"
             />
           </head>
-          {/* This is the welcome page. */}
+          {/* This is the login page. */}
           <body>
             <Header />
             <div className="login-container">
-              <h1 className="login-title">login</h1>
+              <h1 className="login-title">log in</h1>
               <form className="login-form" onSubmit={handleSubmit}>
                 <input
                   name="email"
