@@ -30,19 +30,16 @@ class ReactView(APIView):
 
 @csrf_exempt
 def login_view(request): 
-    email, password = request.POST['email'], request.POST['password'] 
+    email = request.POST.get('email')
+    password = request.POST.get('password')
     user = authenticate(email=email, password=password) 
-    print(email)
-    print(password)
-    return JsonResponse({'foo':'bar'})
-    """if True:
-    #if user is not None: 
-        #login(request, user) 
-        #return redirect('http://localhost:3000/profile') 
-        #return redirect('https://localhost:3000')
-        return 
+    # print(email)
+    # print(password)
+    if user is not None: 
+        login(request, user)
+        return JsonResponse({"success": "True"})
     else: 
-        return redirect('http://localhost:3000/login?error=LoginError')"""
+        return JsonResponse({"success": "False"})
     
 def signup_view(request):
     user = User.objects_create_user(

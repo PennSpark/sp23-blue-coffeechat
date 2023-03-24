@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, redirect, useHistory} from 'react-router-dom';
+import { Link, redirect, useNavigate} from 'react-router-dom';
 import Header from './header';
 import './styles/login.css'
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
   
     const handleSubmit = async (event) => {
       event.preventDefault();
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       try {
-        const response = await axios.post('http://localhost:8000/login/', { email, password });
-        console.log(response.data);
-        //return redirect("http://localhost:3000")
-        //history.push("http://localhost:3000")
-        //add some code to redirect from the frontend
-      } catch (error) {
+        const response = await axios.post('http://localhost:8000/api/login/', { email, password });
+        const success = response.data.success;
+        console.log(success)
+        if (success == "True") {
+          navigate("/profile")
+        } else {
+          navigate("/login?error=LoginError")
+        }
+        
+      } 
+      catch (error) {
         console.error(error.response.data);
       }
     };

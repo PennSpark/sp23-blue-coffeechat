@@ -18,9 +18,9 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls, name="admin"),
-    path('profile/', ReactView.as_view(), name="welcome"),
-    path('login/', login_view, name="login_view"),
-    path('logout/', logout_view, name="logout_view"),
-    path('signup/', signup_view, name="signup_view"),
+    path('api/admin/', admin.site.urls, name="admin"),
+    path('api/profile/', ReactView.as_view(), name="welcome"),
+    path('api/login/', login_view, name="login_view"),
+    path('api/logout/', logout_view, name="logout_view"),
+    path('api/signup/', signup_view, name="signup_view"),
 ]
