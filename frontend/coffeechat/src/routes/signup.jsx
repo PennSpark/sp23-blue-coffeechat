@@ -15,7 +15,6 @@ function Signup() {
       try {
         const response = await axios.post('http://localhost:8000/api/signup/', { email, password });
         const acctStatus = response.data.acctStatus;
-        console.log(acctStatus)
         if (acctStatus == "success") {
             navigate("/profile")
         } else if (acctStatus == "InvalidEmail") {

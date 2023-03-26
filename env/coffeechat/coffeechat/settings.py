@@ -25,6 +25,16 @@ SECRET_KEY = 'django-insecure-pa6k&s*lrs09rk27^)&z=izt*p-z=!27q*%@!-k%5@cala0*-1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'coffeechatpenn@gmail.com'
+EMAIL_HOST_USER = 'coffeechatpenn@gmail.com'
+EMAIL_HOST_PASSWORD = 'diykaehnycdnwhje'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+PASSWORD_RESET_TIMEOUT = 86400
+
 ALLOWED_HOSTS = []
 
 CORS_ORIGIN_ALLOW_ALL = True

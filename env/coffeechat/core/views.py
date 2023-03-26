@@ -14,8 +14,7 @@ class ReactView(APIView):
     
     serializer_class = ReactSerializer
   
-    def get(self, request):
-        # profile = [ {"name": profile.name, "desc": profile.desc, "image": profile.image, "year": profile.year} 
+    def get_profile(self, request):
         profile = [ {"email": profile.email, "name": profile.name, "desc": profile.desc, "year": profile.year} 
 
         for profile in React.objects.all()]
