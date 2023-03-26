@@ -48,6 +48,7 @@ def signup_view(request):
     else:
         user = User.objects.create_user(
             username = request.POST.get("email"),
+            email = request.POST.get("email"),
             password = request.POST.get("password")
         )
         login(request, user)
