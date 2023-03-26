@@ -32,7 +32,7 @@ class ReactView(APIView):
 def login_view(request): 
     email = request.POST.get('email')
     password = request.POST.get('password')
-    user = authenticate(email=email, password=password) 
+    user = authenticate(username=email, password=password) 
     if user is not None: 
         login(request, user)
         return JsonResponse({"success": "True"})
@@ -41,15 +41,15 @@ def login_view(request):
     
 @csrf_exempt
 def signup_view(request):
-    user = User.objects_create_user(
-        email = request.POST("email"),
-        password = request.POST("password")
-    )
-    if len(request.POST("password")) < 8:
+    if len(request.POST.get("password")) < 8:
         return JsonResponse({"acctStatus": "InvalidPassword"})
-    elif request.POST[-9:] != "upenn.edu":
+    elif request.POST.get("email")[-9:] != "upenn.edu":
         return JsonResponse({"acctStatus": "InvalidEmail"})
     else:
+        user = User.objects.create_user(
+            username = request.POST.get("email"),
+            password = request.POST.get("password")
+        )
         login(request, user)
         return JsonResponse({"acctStatus": "success"})
     
