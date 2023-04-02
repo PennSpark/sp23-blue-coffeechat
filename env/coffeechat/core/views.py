@@ -56,3 +56,7 @@ def signup_view(request):
 def logout_view(request):
     logout(request)
     return redirect("/")
+
+@csrf_exempt
+def makeprofile_view(request):
+    return
