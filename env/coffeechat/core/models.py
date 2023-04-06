@@ -5,7 +5,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
-    bio = models.TextField(blank=True)
+    bio = models.CharField(max_length = 200, blank=True)
     YEAR_CHOICES = [
         ('FR', 'Freshman'),
         ('SO', 'Sophomore'),
@@ -14,6 +14,22 @@ class Profile(models.Model):
         ('GR', 'Graduate'),
     ]
     year = models.CharField(max_length=2, choices=YEAR_CHOICES, null=True)
+    SCHOOL_CHOICES = [
+        ('CAS', 'Arts and Sciences'),
+        ('SEAS', 'Engineering'),
+        ('WH', 'Wharton'),
+        ('NU', 'Nursing'),
+        ('COMM', 'Annenberg School of Communication'),
+        ('DENT', 'Dental Medicine'),
+        ('DSGN', 'Weitzman School of Design'),
+        ('EDU', 'Education'),
+        ('LAW', 'Carey Law'),
+        ('MED', 'Perelman School of Medicine'),
+        ('SOPOC', 'Social Policy and Practice'),
+        ('VET', 'Veterinary Medicine'),
+    ]
+    school = models.CharField(max_length=5, choices=SCHOOL_CHOICES, null=True)
+    instagram = models.CharField(max_length=50, blank=True)
 
 class React(models.Model):
     blankField = models.CharField(max_length=1)

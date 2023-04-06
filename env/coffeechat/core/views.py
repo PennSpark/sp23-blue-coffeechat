@@ -59,4 +59,28 @@ def logout_view(request):
 
 @csrf_exempt
 def makeprofile_view(request):
-    return
+    firstName = request.POST.get("firstName")
+    lastName = request.POST.get("lastName")
+    year = request.POST.get("year")
+    school = request.POST.get("school")
+    instagram = request.POST.get("instagram")
+
+    fnError = False
+    lnError = False
+    yrScError = False
+    instaError = False
+
+    if firstName == "":
+        fnError = True
+    if lastName == "":
+        lnError = True
+    ugChoices = ['FR', 'SO', 'JR', 'SR']
+    isUndergrad = ugChoices.count(year) > 0
+    gradOnlySchools = ['COMM', 'DENT', 'DSGN', 'EDU', 'LAW', 'MED', 'SOPOC', 'VET']
+    isInGradSchool = gradOnlySchools.count(school) > 0
+    if isUndergrad and not isInGradSchool:
+        yrScError = True
+    if instagram[:13] != 'instagram.com/':
+        instaError = True
+    return JsonResponse({""}) 
+
