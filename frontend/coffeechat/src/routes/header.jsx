@@ -15,7 +15,7 @@ function Header() {
         event.preventDefault();
         axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
         try {
-          const response = await axios.post('http://localhost:8000/api/logout/', {withCredentials: true});
+          const response = await axios.post('http://localhost:8000/api/logout/', {}, {withCredentials: true});
           const success = response.data.logout;
           if (success === "True") {
             navigate("/login")

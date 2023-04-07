@@ -57,14 +57,14 @@ def signup_view(request):
     
 @csrf_exempt
 def logout_view(request):   
-    print(request.user.is_authenticated)
-    logout(request)
-    print(request.user.is_authenticated)
-    return JsonResponse({"logout": "True"})
+    if request.user.is_authenticated:
+        logout(request)
+        return JsonResponse({"logout": "True"})
+    else:
+        return JsonResponse({"logout": "False"})
 
 @csrf_exempt
 def makeprofile_view(request):
-    print(request.user.is_authenticated)
     firstName = request.POST.get("firstName")
     lastName = request.POST.get("lastName")
     year = request.POST.get("year")
@@ -91,7 +91,7 @@ def makeprofile_view(request):
     if not instagram.startswith('instagram.com/') and not instagram == '':
         print("instaerror")
         instaError = True
-    if not fnError and not lnError and not yrScError and not instaError:
+    if not fnError and not lnError and not yrScError and not instaError and request.user.is_authenticated:
         profile, _ = Profile.objects.get_or_create(user=request.user)
 
         # update the profile fields with the new data
@@ -111,3 +111,23 @@ def makeprofile_view(request):
                          "instaError": str(instaError)}) 
                          
 
+@csrf_exempt
+def startmatch_view(request):
+    if request.user.is_authenticated:
+        profile, _ = Profile.objects.get_or_create(user=request.user)
+
+        profile.isMatchStarted = True
+
+        profile.save()
+
+        return JsonResponse({"success": "True"})
+    else:
+        return JsonResponse({"success": "False"})
+    
+@csrf_exempt
+def checkstartmatch_view(request):
+    if request.user.is_authenticated:
+        profile, _ = Profile.objects.get_or_create(user=request.user)
+        return JsonResponse({"isMatchStarted": str(profile.isMatchStarted)})
+    else:
+        return JsonResponse({"isMatchStarted": "False"})

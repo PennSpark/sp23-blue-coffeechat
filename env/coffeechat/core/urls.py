@@ -24,4 +24,6 @@ urlpatterns = [
     path('api/logout/', logout_view, name="logout_view"),
     path('api/signup/', signup_view, name="signup_view"),
     path('api/makeprofile/', makeprofile_view, name="makeprofile_view"),
+    path('api/startmatch/', startmatch_view, name="startmatch_view"),
+    path('api/checkstartmatch/', checkstartmatch_view, name="checkstartmatch_view"),
 ]

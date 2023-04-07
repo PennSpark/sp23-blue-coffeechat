@@ -32,6 +32,8 @@ class Profile(models.Model):
     instagram = models.CharField(max_length=50, blank=True)
     partnerUsername = models.CharField(max_length=100, blank=True)
     isProfileComplete = models.BooleanField(default=False)
+    isMatchStarted = models.BooleanField(default=False)
+    isMatched = models.BooleanField(default=False)
 
 class React(models.Model):
     blankField = models.CharField(max_length=1)
