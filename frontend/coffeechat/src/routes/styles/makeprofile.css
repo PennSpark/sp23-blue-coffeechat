@@ -1,4 +1,4 @@
-html {
+/* html {
     background-color: #d0ae8b;
 }
 
@@ -13,6 +13,10 @@ input[type=text], [type=password] {
     padding: 0.3vh;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.field-label span.required-field {
+    color: red;
 }
 
 .submit-button {
@@ -64,5 +68,5 @@ input[type=text], [type=password] {
     font-family: 'Lilita One', cursive;
     font-size: 7.5vh;
     text-align: left;
-    /* text-shadow: -1px 1px 0 rgba(0, 0, 0, 1); */
-}
+    
+} */

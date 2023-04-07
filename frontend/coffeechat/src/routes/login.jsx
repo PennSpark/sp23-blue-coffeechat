@@ -13,10 +13,13 @@ function Login() {
       event.preventDefault();
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       try {
-        const response = await axios.post('http://localhost:8000/api/login/', { email, password });
+        const response = await axios.post('http://localhost:8000/api/login/', { email, password }, {withCredentials: true});
         const success = response.data.success;
-        if (success == "True") {
-          navigate("/profile")
+        const isProfileComplete = response.data.isProfileComplete;
+        if (success == "True" && isProfileComplete == "True") {
+          navigate("/match/")
+        } else if (success === "True" && isProfileComplete === "False") {
+          navigate("/makeprofile/")
         } else {
           navigate("/login?error=LoginError")
         }

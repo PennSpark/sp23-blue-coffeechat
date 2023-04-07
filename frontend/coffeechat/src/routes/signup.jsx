@@ -13,10 +13,10 @@ function Signup() {
       event.preventDefault();
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       try {
-        const response = await axios.post('http://localhost:8000/api/signup/', { email, password });
+        const response = await axios.post('http://localhost:8000/api/signup/', { email, password }, {withCredentials: true});
         const acctStatus = response.data.acctStatus;
         if (acctStatus == "success") {
-            navigate("/profile")
+            navigate("/makeprofile")
         } else if (acctStatus == "InvalidEmail") {
             navigate("/signup?error=InvalidEmail")
         } else if (acctStatus == "InvalidPassword") {

@@ -12,6 +12,7 @@ import Login from "./routes/login"
 import Signup from "./routes/signup"
 import Header from './routes/header';
 import MakeProfile from './routes/makeprofile';
+import Match from './routes/match';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,6 +24,7 @@ root.render(
         <Route path="/signup" element={<Signup />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/makeprofile" element={<MakeProfile />}/>
+        <Route path="/match" element={<Match />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

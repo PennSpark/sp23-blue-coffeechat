@@ -30,6 +30,8 @@ class Profile(models.Model):
     ]
     school = models.CharField(max_length=5, choices=SCHOOL_CHOICES, null=True)
     instagram = models.CharField(max_length=50, blank=True)
+    partnerUsername = models.CharField(max_length=100, blank=True)
+    isProfileComplete = models.BooleanField(default=False)
 
 class React(models.Model):
     blankField = models.CharField(max_length=1)

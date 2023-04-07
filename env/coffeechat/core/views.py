@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.views import APIView
 from . models import *
@@ -34,9 +35,10 @@ def login_view(request):
     user = authenticate(username=email, password=password) 
     if user is not None: 
         login(request, user)
-        return JsonResponse({"success": "True"})
+        profile, _ = Profile.objects.get_or_create(user=request.user)
+        return JsonResponse({"success": "True", "isProfileComplete": str(profile.isProfileComplete)})
     else: 
-        return JsonResponse({"success": "False"})
+        return JsonResponse({"success": "False", "isProfileComplete": "Error"})
     
 @csrf_exempt
 def signup_view(request):
@@ -53,12 +55,16 @@ def signup_view(request):
         login(request, user)
         return JsonResponse({"acctStatus": "success"})
     
-def logout_view(request):
+@csrf_exempt
+def logout_view(request):   
+    print(request.user.is_authenticated)
     logout(request)
-    return redirect("/")
+    print(request.user.is_authenticated)
+    return JsonResponse({"logout": "True"})
 
 @csrf_exempt
 def makeprofile_view(request):
+    print(request.user.is_authenticated)
     firstName = request.POST.get("firstName")
     lastName = request.POST.get("lastName")
     year = request.POST.get("year")
@@ -69,18 +75,39 @@ def makeprofile_view(request):
     lnError = False
     yrScError = False
     instaError = False
-
     if firstName == "":
+        print("fnerror")
         fnError = True
     if lastName == "":
+        print("lnerror")
         lnError = True
     ugChoices = ['FR', 'SO', 'JR', 'SR']
     isUndergrad = ugChoices.count(year) > 0
     gradOnlySchools = ['COMM', 'DENT', 'DSGN', 'EDU', 'LAW', 'MED', 'SOPOC', 'VET']
     isInGradSchool = gradOnlySchools.count(school) > 0
-    if isUndergrad and not isInGradSchool:
+    if isUndergrad and isInGradSchool:
+        print("yrscerror")
         yrScError = True
-    if instagram[:13] != 'instagram.com/':
+    if not instagram.startswith('instagram.com/') and not instagram == '':
+        print("instaerror")
         instaError = True
-    return JsonResponse({""}) 
+    if not fnError and not lnError and not yrScError and not instaError:
+        profile, _ = Profile.objects.get_or_create(user=request.user)
+
+        # update the profile fields with the new data
+        print("update profile")
+        profile.first_name = request.POST.get("firstName")
+        profile.last_name = request.POST.get("lastName")
+        profile.year = request.POST.get("year")
+        profile.school = request.POST.get("school")
+        profile.instagram = request.POST.get("instagram")
+        profile.isProfileComplete = True
+        
+        # save the updated profile object to the database
+        profile.save()
+    return JsonResponse({"firstNameError": str(fnError),
+                         "lastNameError": str(lnError),
+                         "yearSchoolError": str(yrScError),
+                         "instaError": str(instaError)}) 
+                         
 

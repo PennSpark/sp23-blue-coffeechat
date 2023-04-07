@@ -1,4 +1,4 @@
-.signup-button {
+/* .signup-button {
     transition-duration: 0.2s;
     border-radius: 12px;
     background-color: #2f2017;
@@ -45,7 +45,7 @@
     font-family: 'Lilita One', cursive;
     font-size: 7.5vh;
     text-align: left;
-    /* text-shadow: -1px 1px 0 rgba(0, 0, 0, 1); */
+    
 }
 
 .welcome-title span {
@@ -58,4 +58,4 @@
 
 .welcome-title::before {
     text-shadow: -1px 0 0 rgba(0, 0, 0, .2);   
-}
+} */

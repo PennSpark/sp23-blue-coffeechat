@@ -1,4 +1,4 @@
-header {
+/* header {
     color: #fae9e0;
     position: fixed;
     font-family: 'Work Sans', sans-serif;
@@ -8,12 +8,18 @@ header {
     background-color: #221711;
     padding: 1.8vh;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
   }
 
-.brand-name {
+.header-text {
     color: #fae9e0;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: start; 
 }
+
+.header-text span {
+  margin-right: 2svw;
+} */

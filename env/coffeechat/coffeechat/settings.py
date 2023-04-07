@@ -45,6 +45,8 @@ CORS_ALLOWED_ORIGINS = [
     # Add any other allowed origins here
 ]
 
+CORS_ALLOW_CREDENTIALS = True
+
 # Application definition
 
 INSTALLED_APPS = [

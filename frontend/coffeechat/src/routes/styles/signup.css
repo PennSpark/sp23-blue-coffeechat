@@ -1,4 +1,4 @@
-input[type=text], [type=password] {
+/* input[type=text], [type=password] {
     border-radius: 12px;
     background-color: #C59667;
     color: #2f2017;
@@ -60,5 +60,5 @@ input[type=text], [type=password] {
     font-family: 'Lilita One', cursive;
     font-size: 7.5vh;
     text-align: left;
-    /* text-shadow: -1px 1px 0 rgba(0, 0, 0, 1); */
-}
+    
+} */
