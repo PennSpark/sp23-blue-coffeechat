@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from . serializer import *
 from django.views.decorators.csrf import csrf_exempt
 
+
 import json
 from django.http import JsonResponse
 
@@ -70,6 +71,8 @@ def makeprofile_view(request):
     year = request.POST.get("year")
     school = request.POST.get("school")
     instagram = request.POST.get("instagram")
+    image = request.FILES.get("image")
+    bio = request.POST.get("bio")
 
     fnError = False
     lnError = False
@@ -101,7 +104,16 @@ def makeprofile_view(request):
         profile.year = request.POST.get("year")
         profile.school = request.POST.get("school")
         profile.instagram = request.POST.get("instagram")
+        profile.bio = request.POST.get("bio")
         profile.isProfileComplete = True
+        
+
+        print(image)
+
+        if image:
+            profile.image = image
+        else:
+            profile.image = 'default.png'
         
         # save the updated profile object to the database
         profile.save()

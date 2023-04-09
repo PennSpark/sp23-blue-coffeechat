@@ -11,13 +11,25 @@ function MakeProfile() {
     const [year, setYear] = useState('');
     const [school, setSchool] = useState('');
     const [instagram, setInstagram] = useState('');
+    const [image, setImage] = useState(null);
     const navigate = useNavigate();
   
     const handleSubmit = async (event) => {
       event.preventDefault();
-      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
       try {
-        const response = await axios.post('http://localhost:8000/api/makeprofile/', { firstName, lastName, bio, year, school, instagram }, {withCredentials: true});
+        console.log(image);
+        const formData = new FormData();
+        formData.append('firstName', firstName);
+        formData.append('lastName', lastName);
+        formData.append('bio', bio);
+        formData.append('year', year);
+        formData.append('school', school);
+        formData.append('instagram', instagram);
+        formData.append('image', image);
+  
+      const response = await axios.post('http://localhost:8000/api/makeprofile/', formData, { withCredentials: true });
+      console.log(response.data);
         const data = response.data;
         const fnError = data.firstNameError;
         const lnError = data.lastNameError;
@@ -56,8 +68,6 @@ function MakeProfile() {
       
     };
 
-    
-    
     return (
         <>
           <div>
@@ -142,8 +152,20 @@ function MakeProfile() {
                         value={instagram}
                         onChange={(event) => setInstagram(event.target.value)}
                     />
-
-
+                    <label className="field-label" for="image">Image</label>
+                    <input
+                      name="image"
+                      type="file"
+                      onChange={(event) => setImage(event.target.files[0])}
+                    />
+                    <label className='field-label' for="bio">Bio</label>
+                    <input
+                        name="bio"
+                        type="text"
+                        placeholder='write a bio'
+                        value={bio}
+                        onChange={(event) => setBio(event.target.value)}
+                    />
                     <button type="submit" className="submit-button">
                         create profile
                     </button>

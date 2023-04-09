@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+def upload_to(instance, filename):
+    return 'images/{filename}'.format(filename=filename)
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30, blank=True)
@@ -30,6 +33,7 @@ class Profile(models.Model):
     ]
     school = models.CharField(max_length=5, choices=SCHOOL_CHOICES, null=True)
     instagram = models.CharField(max_length=50, blank=True)
+    image = models.ImageField(upload_to='profile_images/', default='/Users/kaiwang/Desktop/coffeechat/sp23-blue-coffeechat/env/coffeechat/media/profile_images/default.png')
     partnerUsername = models.CharField(max_length=100, blank=True)
     isProfileComplete = models.BooleanField(default=False)
     isMatchStarted = models.BooleanField(default=False)
