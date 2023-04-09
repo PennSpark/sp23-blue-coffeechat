@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, redirect, useNavigate} from 'react-router-dom';
 import Header from './header';
+import Loading from './loading';
 import './styles/makeprofile.css'
 
 function MakeProfile() {
@@ -11,7 +12,28 @@ function MakeProfile() {
     const [year, setYear] = useState('');
     const [school, setSchool] = useState('');
     const [instagram, setInstagram] = useState('');
+    const [showGraduateFields, setShowGraduateFields] = useState(true);
     const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const authRedirect = async () => {
+        try {
+        const response = await axios.get('http://localhost:8000/api/checkauth/', { withCredentials: true});
+        if (!response.data.isAuth) {
+            navigate("/login")
+        }
+        } catch (error) {
+        console.error(error);
+        }
+        setIsLoading(false);
+    };
+
+    authRedirect();
+
+    if (isLoading) {
+        return(<Loading/>);
+    }
   
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -33,7 +55,7 @@ function MakeProfile() {
         } else if (instaError === "True") {
             navigate("/makeprofile?error=MakeProfileError")
         } else {
-          navigate("/match/")
+          navigate("/startmatch/")
         }
         
       } 
@@ -41,8 +63,6 @@ function MakeProfile() {
         console.error(error.response.data);
       }
     };
-
-    const [showGraduateFields, setShowGraduateFields] = useState(true);
 
     const handleYearChange = (event) => {
       const { value } = event.target;

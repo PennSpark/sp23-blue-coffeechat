@@ -58,6 +58,7 @@ def signup_view(request):
 @csrf_exempt
 def logout_view(request):   
     if request.user.is_authenticated:
+        print("auth before logout")
         logout(request)
         return JsonResponse({"logout": "True"})
     else:
@@ -123,11 +124,8 @@ def startmatch_view(request):
         return JsonResponse({"success": "True"})
     else:
         return JsonResponse({"success": "False"})
-    
+
 @csrf_exempt
-def checkstartmatch_view(request):
-    if request.user.is_authenticated:
-        profile, _ = Profile.objects.get_or_create(user=request.user)
-        return JsonResponse({"isMatchStarted": str(profile.isMatchStarted)})
-    else:
-        return JsonResponse({"isMatchStarted": "False"})
+def checkauth_view(request):
+    # If this isn't working, make sure you're passing { withCredentials: true } in with the axios get
+    return JsonResponse({"isAuth": request.user.is_authenticated})

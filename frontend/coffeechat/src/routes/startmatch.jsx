@@ -3,11 +3,9 @@ import axios from 'axios';
 import { Link, redirect, useNavigate} from 'react-router-dom';
 import Header from './header';
 import Loading from './loading';
-import './styles/match.css'
+import './styles/startmatch.css'
 
-function Match() {
-    const isMatched = false;
-    
+function StartMatch() {
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(true);
@@ -31,9 +29,23 @@ function Match() {
     }
 
 
-    if (isMatched) {
-        return(
-            <>  
+    const handleMatchStarted = async (event) => {
+        event.preventDefault();
+        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+        try {
+            const response = await axios.post('http://localhost:8000/api/startmatch/', {}, {withCredentials: true});
+            const success = response.data.success;  
+            if (success === "True") {
+                navigate("/match");
+            }          
+        } 
+        catch (error) {
+            console.error(error.response.data);
+        };
+    }
+
+    return(
+        <>  
             <head>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -42,33 +54,16 @@ function Match() {
             <body>
                 <Header/>
                 <div>
-                    {/* Page if matched */}
-                </div>
-            </body>
-            </>
-        );
-    } else {
-        return(
-            <>  
-            <head>
-                <link rel="preconnect" href="https://fonts.googleapis.com"/>
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-                <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Work+Sans:wght@500&display=swap" rel="stylesheet"/>
-            </head>
-            <body>
-                <Header/>
-                <div>
-                    <p>Your friendship is brewing...</p>
-                    <p>We'll let you know when it's ready!</p>
+                    <p className='heading-text'>Are you ready to find a new friend?</p>
+                    <p className='heading-text'>Press below and we'll randomly match you with another Penn student! The possibilities are endless.</p>
+                    <button className='submit-button' onClick={handleMatchStarted}>Start Brewing a New Friendship</button>
                 </div>
                 <div>
                     <p className='body-text'>Want to make changes to your profile? <Link to="/makeprofile">Update it here</Link></p>
                 </div>
             </body>
             </>
-            
-        );
-    }
-};
+    );
+}
 
-export default Match;
+export default StartMatch;
