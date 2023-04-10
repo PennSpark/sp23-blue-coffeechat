@@ -1,13 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, redirect, useNavigate} from 'react-router-dom';
 import Header from './header';
+import Loading from './loading';
 import './styles/login.css'
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const authRedirect = async () => {
+        try {
+        const response = await axios.get('http://localhost:8000/api/checkauth/', { withCredentials: true});
+        if (response.data.isAuth) {
+            navigate("/startmatch")
+        }
+        } catch (error) {
+        console.error(error);
+        }
+        setIsLoading(false);
+    };
+
+    authRedirect();
+
+    if (isLoading) {
+        return(<Loading/>);
+    }
   
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -17,7 +38,7 @@ function Login() {
         const success = response.data.success;
         const isProfileComplete = response.data.isProfileComplete;
         if (success == "True" && isProfileComplete == "True") {
-          navigate("/match/")
+          navigate("/startmatch/")
         } else if (success === "True" && isProfileComplete === "False") {
           navigate("/makeprofile/")
         } else {

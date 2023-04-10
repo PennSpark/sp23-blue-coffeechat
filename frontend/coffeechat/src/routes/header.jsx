@@ -8,7 +8,7 @@ function Header() {
 
     const handleCoffeechat = async (event) => {
         event.preventDefault();
-        navigate("/")
+        navigate("/startmatch")
     }
 
     const handleLogOut = async (event) => {
