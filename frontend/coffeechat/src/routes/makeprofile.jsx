@@ -13,6 +13,7 @@ function MakeProfile() {
     const [school, setSchool] = useState('');
     const [instagram, setInstagram] = useState('');
     const [showGraduateFields, setShowGraduateFields] = useState(true);
+    const [image, setImage] = useState(null);
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(true);
@@ -181,7 +182,7 @@ function MakeProfile() {
                     <input
                         name="bio"
                         type="text"
-                        placeholder='write a bio'
+                        placeholder='Write a bio...'
                         value={bio}
                         onChange={(event) => setBio(event.target.value)}
                     />
