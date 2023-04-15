@@ -33,7 +33,7 @@ class Profile(models.Model):
     ]
     school = models.CharField(max_length=5, choices=SCHOOL_CHOICES, null=True)
     instagram = models.CharField(max_length=50, blank=True)
-    image = models.ImageField(upload_to='profile_images/', default='/Users/kaiwang/Desktop/coffeechat/sp23-blue-coffeechat/env/coffeechat/media/profile_images/default.png')
+    image = models.ImageField(upload_to='profile_images/', default='profile_images/default.png')
     partnerUsername = models.CharField(max_length=100, blank=True)
     isProfileComplete = models.BooleanField(default=False)
     isMatchStarted = models.BooleanField(default=False)
