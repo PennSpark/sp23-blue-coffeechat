@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/signup/', signup_view, name="signup_view"),
     path('api/makeprofile/', makeprofile_view, name="makeprofile_view"),
     path('api/startmatch/', startmatch_view, name="startmatch_view"),
+    path('api/checkmatch/', getismatched_view, name="getismatched_view"),
     path('api/checkauth/', checkauth_view, name="checkauth_view"),
 ]
 

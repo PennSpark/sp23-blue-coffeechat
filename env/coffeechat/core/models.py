@@ -6,6 +6,7 @@ def upload_to(instance, filename):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    username_formatching = models.CharField(max_length=100, blank=True) # username for matching in a script, not for login
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     bio = models.CharField(max_length = 200, blank=True)
@@ -16,7 +17,7 @@ class Profile(models.Model):
         ('SR', 'Senior'),
         ('GR', 'Graduate'),
     ]
-    year = models.CharField(max_length=2, choices=YEAR_CHOICES, null=True)
+    year = models.CharField(max_length=2, choices=YEAR_CHOICES, blank=True)
     SCHOOL_CHOICES = [
         ('CAS', 'Arts and Sciences'),
         ('SEAS', 'Engineering'),
@@ -31,7 +32,7 @@ class Profile(models.Model):
         ('SOPOC', 'Social Policy and Practice'),
         ('VET', 'Veterinary Medicine'),
     ]
-    school = models.CharField(max_length=5, choices=SCHOOL_CHOICES, null=True)
+    school = models.CharField(max_length=5, choices=SCHOOL_CHOICES, blank=True)
     instagram = models.CharField(max_length=50, blank=True)
     image = models.ImageField(upload_to='profile_images/', default='profile_images/default.png')
     partnerUsername = models.CharField(max_length=100, blank=True)

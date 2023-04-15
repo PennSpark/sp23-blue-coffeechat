@@ -129,6 +129,8 @@ def startmatch_view(request):
     if request.user.is_authenticated:
         profile, _ = Profile.objects.get_or_create(user=request.user)
 
+        profile.username_formatching = request.user.username
+
         profile.isMatchStarted = True
 
         profile.save()
@@ -136,6 +138,15 @@ def startmatch_view(request):
         return JsonResponse({"success": "True"})
     else:
         return JsonResponse({"success": "False"})
+    
+@csrf_exempt
+def getismatched_view(request):
+    if request.user.is_authenticated:
+        profile, _ = Profile.objects.get_or_create(user=request.user)
+
+        return JsonResponse({"isMatched": str(profile.isMatched)})
+    else:
+        return JsonResponse({"isMatched": "False"})
 
 @csrf_exempt
 def checkauth_view(request):
