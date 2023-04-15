@@ -27,8 +27,9 @@ urlpatterns = [
     path('api/signup/', signup_view, name="signup_view"),
     path('api/makeprofile/', makeprofile_view, name="makeprofile_view"),
     path('api/startmatch/', startmatch_view, name="startmatch_view"),
-    path('api/checkstartmatch/', checkstartmatch_view, name="checkstartmatch_view"),
-]
+    path('api/checkauth/', checkauth_view, name="checkauth_view"),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
