@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Link, redirect, useNavigate} from 'react-router-dom';
 import Header from './header';
 import Loading from './loading';
-import './styles/login.css'
-
+/*import './styles/login.css' */
+import './styles/generic.css'
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -65,10 +65,16 @@ function Login() {
           </head>
           {/* This is the login page. */}
           <body>
-            <Header />
-            <div className="login-container">
-              <h1 className="login-title">log in</h1>
-              <form className="login-form" onSubmit={handleSubmit}>
+            <div className="container">
+            <div className="logo">
+                  <div className="coffeechat">
+                    CoffeeChat
+                  </div>
+                  <img src="/images/image 2.png" alt="alt logo"/>
+                </div>
+              <div className="text-container">
+              <h1 className="title">log in</h1>
+              <form className="form" onSubmit={handleSubmit}>
                 <input
                   name="email"
                   type="text"
@@ -83,11 +89,12 @@ function Login() {
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                 />
-                <button type="submit" className="login-button">
+                <button type="submit" className="button">
                   log in
                 </button>
               </form>
               <Link to="/signup">Don't have an account yet? Sign up here.</Link>
+              </div>
             </div>
           </body>
         </div>

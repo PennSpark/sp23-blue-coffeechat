@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 import Header from './header';
 import Loading from './loading';
-import './styles/signup.css'
+/*import './styles/signup.css' */
+import './styles/generic.css'
 
 function Signup() {
     const [email, setEmail] = useState('');
@@ -66,7 +67,7 @@ function Signup() {
             </head>
             {/* This is the signup page. */}
             <body>
-              <div className="signup-container">
+              <div className="container">
                 <div className="logo">
                   <div className="coffeechat">
                     CoffeeChat
@@ -74,8 +75,8 @@ function Signup() {
                   <img src="/images/image 2.png" alt="alt logo"/>
                 </div>
                 <div className="text-container">
-                <h1 className="signup-title">sign up</h1>
-                <form className="signup-form" onSubmit={handleSubmit}>
+                <h1 className="title">sign up</h1>
+                <form className="form" onSubmit={handleSubmit}>
                   <input
                     name="email"
                     type="text"
@@ -90,7 +91,7 @@ function Signup() {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                   />
-                  <button type="submit" className="signup-button">
+                  <button type="submit" className="button">
                     sign up
                   </button>
                 </form>
