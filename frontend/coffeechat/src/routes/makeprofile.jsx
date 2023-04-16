@@ -1,5 +1,7 @@
+// eslint-disable-next-line
 import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
+// eslint-disable-next-line
 import { Link, redirect, useNavigate} from 'react-router-dom';
 import Header from './header';
 import Loading from './loading';

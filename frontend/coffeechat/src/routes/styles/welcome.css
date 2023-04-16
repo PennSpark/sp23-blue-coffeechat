@@ -1,4 +1,9 @@
-/* .signup-button {
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+
+ 
+ .signup-button {
     transition-duration: 0.2s;
     border-radius: 12px;
     background-color: #2f2017;
@@ -28,9 +33,9 @@
 }
 
 .welcome-container {
-    background-color: #d0ae8b;
+    background-color: #F5E1CD;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: left;
     justify-content: flex-start;
     width: 100vw;
@@ -40,10 +45,26 @@
 
 }
 
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+}
+
+img {
+    transform: scale(0.7);
+    flex-basis: 40%;
+    align-self: flex-start;
+}
+
+
 .welcome-title {
-    color: #2f2017;
-    font-family: 'Lilita One', cursive;
-    font-size: 7.5vh;
+    color: #3C250F;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 4000;
+    line-height: 13vh; 
+    font-size: 10vh;
     text-align: left;
     
 }
@@ -58,4 +79,4 @@
 
 .welcome-title::before {
     text-shadow: -1px 0 0 rgba(0, 0, 0, .2);   
-} */
+} 

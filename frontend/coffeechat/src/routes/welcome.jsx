@@ -14,13 +14,15 @@ function Welcome() {
             {/* This is the welcome page. */}
             <body>
                 <p></p> {/* Remove this if there's a weird whitespace above the header */}
-                <Header/>
                 <div className="welcome-container">
+                    <div className="welcome-text">
                     <p className="welcome-title">welcome to<span style={{ fontSize: "5.5vw" }}> </span><span><span>c</span>offeechat</span></p>
                     <p className="subtitle">find your newest friendship today</p>
                     <Link to="/signup">
                         <button className="signup-button">join</button>
                     </Link>
+                    </div>
+                    <img src="/images/image 1.png" alt="description of image"/>
                 </div>
             </body>
         </  >

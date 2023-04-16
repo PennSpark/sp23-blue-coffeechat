@@ -66,8 +66,14 @@ function Signup() {
             </head>
             {/* This is the signup page. */}
             <body>
-              <Header />
               <div className="signup-container">
+                <div className="logo">
+                  <div className="coffeechat">
+                    CoffeeChat
+                  </div>
+                  <img src="/images/image 2.png" alt="alt logo"/>
+                </div>
+                <div className="text-container">
                 <h1 className="signup-title">sign up</h1>
                 <form className="signup-form" onSubmit={handleSubmit}>
                   <input
@@ -88,7 +94,12 @@ function Signup() {
                     sign up
                   </button>
                 </form>
-                <Link to="/login">Already have an account? Log in here.</Link>
+                <div className="login-text">
+                <Link to="/login">
+                Already have an account? Log in here.
+                 </Link>
+                 </div>
+                </div>
               </div>
             </body>
           </div>
