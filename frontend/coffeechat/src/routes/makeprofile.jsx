@@ -174,12 +174,6 @@ function MakeProfile() {
                         value={instagram}
                         onChange={(event) => setInstagram(event.target.value)}
                     />
-                    <label className="field-label" for="image">Image</label>
-                    <input
-                      name="image"
-                      type="file"
-                      onChange={(event) => setImage(event.target.files[0])}
-                    />
                     <label className='field-label' for="bio">Bio</label>
                     <input
                         name="bio"
@@ -188,10 +182,17 @@ function MakeProfile() {
                         value={bio}
                         onChange={(event) => setBio(event.target.value)}
                     />
+                    <label className="field-label" for="image">Image</label>
+                    
                     <button type="submit" className="submit-button">
                         create profile
                     </button>
                 </div>
+                <input
+                      name="image"
+                      type="file"
+                      onChange={(event) => setImage(event.target.files[0])}
+                    />
               </form>
 
               {/* <script>
