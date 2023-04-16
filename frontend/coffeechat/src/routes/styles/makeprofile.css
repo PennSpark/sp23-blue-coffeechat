@@ -1,5 +1,5 @@
  html {
-    background-color: #d0ae8b;
+    background-color: #F5E1CD;
 }
 
 input[type=text], [type=password] {
@@ -62,6 +62,7 @@ input[type=text], [type=password] {
     width: 100vw;
     gap: 10px
 }
+
 
 .makeprofile-title {
     color: #2f2017;

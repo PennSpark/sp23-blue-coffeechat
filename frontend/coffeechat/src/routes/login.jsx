@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, redirect, useNavigate} from 'react-router-dom';
-import Header from './header';
 import Loading from './loading';
 /*import './styles/login.css' */
 import './styles/generic.css'
