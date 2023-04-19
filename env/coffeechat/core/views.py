@@ -43,10 +43,10 @@ def login_view(request):
     
 @csrf_exempt
 def signup_view(request):
-    if len(request.POST.get("password")) < 8:
-        return JsonResponse({"acctStatus": "InvalidPassword"})
-    elif request.POST.get("email")[-9:] != "upenn.edu":
+    if request.POST.get("email")[-9:] != "upenn.edu":
         return JsonResponse({"acctStatus": "InvalidEmail"})
+    elif len(request.POST.get("password")) < 8:
+        return JsonResponse({"acctStatus": "InvalidPassword"})
     else:
         user = User.objects.create_user(
             username = request.POST.get("email"),
@@ -138,6 +138,14 @@ def startmatch_view(request):
         return JsonResponse({"success": "True"})
     else:
         return JsonResponse({"success": "False"})
+    
+@csrf_exempt
+def getismatchstarted_view(request):
+    if request.user.is_authenticated:
+        profile, _ = Profile.objects.get_or_create(user=request.user)
+        return JsonResponse({"isMatchStarted": profile.isMatchStarted})
+    else:
+        return JsonResponse({"isMatchStarted": False})
     
 @csrf_exempt
 def getismatched_view(request):

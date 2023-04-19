@@ -11,6 +11,8 @@ function Login() {
 
     const [isLoading, setIsLoading] = useState(true);
 
+    const [error, setError] = useState(false);
+
     const authRedirect = async () => {
         try {
         const response = await axios.get('http://localhost:8000/api/checkauth/', { withCredentials: true});
@@ -33,6 +35,7 @@ function Login() {
       event.preventDefault();
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       try {
+        setError(false);
         const response = await axios.post('http://localhost:8000/api/login/', { email, password }, {withCredentials: true});
         const success = response.data.success;
         const isProfileComplete = response.data.isProfileComplete;
@@ -41,6 +44,7 @@ function Login() {
         } else if (success === "True" && isProfileComplete === "False") {
           navigate("/makeprofile/")
         } else {
+          setError(true);
           navigate("/login?error=LoginError")
         }
         
@@ -74,6 +78,7 @@ function Login() {
               <div className="text-container">
               <h1 className="title">log in</h1>
               <form className="form" onSubmit={handleSubmit}>
+                {error && <p className="error">Invalid email or password. Please try again. If you don't have an account, sign up <Link to="/signup">here.</Link></p>}
                 <input
                   name="email"
                   type="text"

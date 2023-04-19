@@ -16,8 +16,8 @@ function StartMatch() {
             if (!response.data.isAuth) {
                 navigate("/login")
             }
-            const matchResponse = await axios.get('http://localhost:8000/api/checkmatch/', { withCredentials: true});
-            if (matchResponse.data.isMatched) {
+            const matchResponse = await axios.get('http://localhost:8000/api/checkmatchstarted/', { withCredentials: true});
+            if (matchResponse.data.isMatchStarted) {
                 console.log("here")
                 navigate("/match");
             }

@@ -13,6 +13,10 @@ function Signup() {
 
     const [isLoading, setIsLoading] = useState(true);
 
+    const [emailError, setEmailError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+    const [signupError, setSignupError] = useState(false);
+
     const authRedirect = async () => {
         try {
         const response = await axios.get('http://localhost:8000/api/checkauth/', { withCredentials: true});
@@ -34,16 +38,22 @@ function Signup() {
     const handleSubmit = async (event) => {
       event.preventDefault();
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      setEmailError(false);
+      setPasswordError(false);
+      setSignupError(false);
       try {
         const response = await axios.post('http://localhost:8000/api/signup/', { email, password }, {withCredentials: true});
         const acctStatus = response.data.acctStatus;
         if (acctStatus == "success") {
             navigate("/makeprofile")
         } else if (acctStatus == "InvalidEmail") {
+            setEmailError(true);
             navigate("/signup?error=InvalidEmail")
         } else if (acctStatus == "InvalidPassword") {
+            setPasswordError(true);
             navigate("/signup?error=InvalidPassword")
         } else {
+            setSignupError(true);
             navigate("/signup?error=SignupError")
         }
         
@@ -77,6 +87,8 @@ function Signup() {
                 <div className="text-container">
                 <h1 className="title">sign up</h1>
                 <form className="form" onSubmit={handleSubmit}>
+                  {signupError && <div className="error">An error occurred. Please try again.</div>}
+                  {emailError && <div className="error">Invalid email. Please enter a valid Penn email.</div>}
                   <input
                     name="email"
                     type="text"
@@ -84,6 +96,7 @@ function Signup() {
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                   />
+                  {passwordError && <div className="error">Invalid password. Please enter a password with at least 8 characters.</div>}
                   <input
                     name="password"
                     type="password"

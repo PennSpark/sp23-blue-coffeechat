@@ -18,6 +18,11 @@ function MakeProfile() {
     const [image, setImage] = useState(null);
     const navigate = useNavigate();
 
+    const [firstNameError, setFirstNameError] = useState(false);
+    const [lastNameError, setLastNameError] = useState(false);
+    const [yearSchoolError, setYearSchoolError] = useState(false);
+    const [instaError, setInstaError] = useState(false);
+
     const [isLoading, setIsLoading] = useState(true);
 
     const authRedirect = async () => {
@@ -61,12 +66,16 @@ function MakeProfile() {
         const instaError = data.instaError;
 
         if (fnError === "True") {
+            setFirstNameError(true);
             navigate("/makeprofile?error=MakeProfileError")
         } else if (lnError === "True") {
+            setLastNameError(true);
             navigate("/makeprofile?error=MakeProfileError")
         } else if (yrScError === "True") {
+            setYearSchoolError(true);
             navigate("/makeprofile?error=MakeProfileError")
         } else if (instaError === "True") {
+            setInstaError(true);
             navigate("/makeprofile?error=MakeProfileError")
         } else {
           navigate("/startmatch/")
@@ -110,6 +119,7 @@ function MakeProfile() {
                     <h1 className="makeprofile-title">create your profile</h1>
                     <label className='field-label'><span className='required-field'>*</span> field is required</label>
                     <label className="field-label" for="firstname">First Name<span className='required-field'>*</span></label>
+                    {firstNameError && <label className="error-label">Please enter your first name.</label>}
                     <input
                         name="firstname"
                         type="text"
@@ -117,6 +127,7 @@ function MakeProfile() {
                         value={firstName}
                         onChange={(event) => setFirstName(event.target.value)}
                     />
+                    {lastNameError && <label className="error-label">Please enter your last name.</label>}
                     <label className="field-label" for="lastname">Last Name<span className='required-field'>*</span></label>
                     <input
                         name="lastname"
@@ -125,6 +136,7 @@ function MakeProfile() {
                         value={lastName}
                         onChange={(event) => setLastName(event.target.value)}
                     />
+                    {yearSchoolError && <label className="error-label">Incompatible school choice. Please try again.</label>}
                     <label className="field-label" for="academic_year">Academic Year</label>
                     <select 
                         name="academic_year" 
@@ -165,12 +177,12 @@ function MakeProfile() {
                         </>
                       )}
                   </select>
-
+                  {instaError && <label className="error-label">Please enter a correctly formatted Instagram link (e.g., "instagram.com/coffeechat-penn").</label>}
                   <label className='field-label' for="instagram">Instagram</label>
                   <input
                         name="instagram"
                         type="text"
-                        placeholder='instagram.com/username'
+                        placeholder='instagram.com/pennspark'
                         value={instagram}
                         onChange={(event) => setInstagram(event.target.value)}
                     />
