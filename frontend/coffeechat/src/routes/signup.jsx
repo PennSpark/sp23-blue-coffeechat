@@ -15,6 +15,7 @@ function Signup() {
 
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [userExistsError, setUserExistsError] = useState(false);
     const [signupError, setSignupError] = useState(false);
 
     const authRedirect = async () => {
@@ -52,6 +53,9 @@ function Signup() {
         } else if (acctStatus == "InvalidPassword") {
             setPasswordError(true);
             navigate("/signup?error=InvalidPassword")
+        } else if (acctStatus === "UserExists") {
+            setUserExistsError(true);
+            navigate("/signup?error=UserExists")
         } else {
             setSignupError(true);
             navigate("/signup?error=SignupError")
@@ -88,6 +92,7 @@ function Signup() {
                 <h1 className="title">sign up</h1>
                 <form className="form" onSubmit={handleSubmit}>
                   {signupError && <div className="error">An error occurred. Please try again.</div>}
+                  {userExistsError && <div className="error">User already exists. Please <Link to="/login">log in.</Link></div>}
                   {emailError && <div className="error">Invalid email. Please enter a valid Penn email.</div>}
                   <input
                     name="email"

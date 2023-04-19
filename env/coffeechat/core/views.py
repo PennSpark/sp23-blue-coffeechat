@@ -48,12 +48,15 @@ def signup_view(request):
     elif len(request.POST.get("password")) < 8:
         return JsonResponse({"acctStatus": "InvalidPassword"})
     else:
-        user = User.objects.create_user(
-            username = request.POST.get("email"),
-            email = request.POST.get("email"),
-            password = request.POST.get("password")
-        )
-        login(request, user)
+        try:
+            user = User.objects.create_user(
+                username = request.POST.get("email"),
+                email = request.POST.get("email"),
+                password = request.POST.get("password")
+            )
+            login(request, user)
+        except:
+            return JsonResponse({"acctStatus": "UserExists"})
         return JsonResponse({"acctStatus": "success"})
     
 @csrf_exempt

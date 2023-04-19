@@ -5,7 +5,8 @@ import axios from 'axios';
 import { Link, redirect, useNavigate} from 'react-router-dom';
 import Header from './header';
 import Loading from './loading';
-import './styles/makeprofile.css'
+// import './styles/makeprofile.css'
+import './styles/generic.css'
 
 function MakeProfile() {
     const [firstName, setFirstName] = useState('');
@@ -114,28 +115,29 @@ function MakeProfile() {
             {/* This is the make profile page. */}
             <body>
               <Header />
-              <form className="makeprofile-form" onSubmit={handleSubmit}>
-                <div className="makeprofile-form-container">
-                    <h1 className="makeprofile-title">create your profile</h1>
-                    <label className='field-label'><span className='required-field'>*</span> field is required</label>
+              <p className='spacer'></p>
+              <form className="form" onSubmit={handleSubmit}>
+                <div className="form-container">
+                    <h1 className="small-title">edit your profile</h1><br></br>
+                    <label className='field-label'><span className='required-field'>*</span> field is required</label><br></br>
                     <label className="field-label" for="firstname">First Name<span className='required-field'>*</span></label>
-                    {firstNameError && <label className="error-label">Please enter your first name.</label>}
+                    {firstNameError && <label className="error-label">Please enter your first name.</label>}<br></br>
                     <input
                         name="firstname"
                         type="text"
                         placeholder='Benjamin'
                         value={firstName}
                         onChange={(event) => setFirstName(event.target.value)}
-                    />
+                    /><br></br>
                     {lastNameError && <label className="error-label">Please enter your last name.</label>}
-                    <label className="field-label" for="lastname">Last Name<span className='required-field'>*</span></label>
+                    <label className="field-label" for="lastname">Last Name<span className='required-field'>*</span></label><br></br>
                     <input
                         name="lastname"
                         type="text"
                         placeholder='Franklin'
                         value={lastName}
                         onChange={(event) => setLastName(event.target.value)}
-                    />
+                    /><br></br>
                     {yearSchoolError && <label className="error-label">Incompatible school choice. Please try again.</label>}
                     <label className="field-label" for="academic_year">Academic Year</label>
                     <select 
@@ -187,24 +189,30 @@ function MakeProfile() {
                         onChange={(event) => setInstagram(event.target.value)}
                     />
                     <label className='field-label' for="bio">Bio</label>
-                    <input
+                    <textarea
                         name="bio"
                         type="text"
+                        className='bio'
                         placeholder='Write a bio...'
                         value={bio}
                         onChange={(event) => setBio(event.target.value)}
                     />
-                    <label className="field-label" for="image">Image</label>
-                    
-                    <button type="submit" className="submit-button">
-                        create profile
-                    </button>
-                </div>
-                <input
+                    <label className="field-label" for="image">Profile Image (Square Dimensions Required)</label>
+                    <label for="image-upload" className="custom-file-upload">
+                    <input
                       name="image"
                       type="file"
+                      id="image-upload"
                       onChange={(event) => setImage(event.target.files[0])}
                     />
+                    Upload
+                    </label>
+                    
+                    <button type="submit" className="submit-button">
+                        save profile
+                    </button>
+                </div>
+
               </form>
 
               {/* <script>
