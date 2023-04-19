@@ -71,9 +71,9 @@ function Login() {
             <div className="container">
             <div className="logo">
                   <div className="coffeechat">
-                    CoffeeChat
+                    coffeechat
                   </div>
-                  <img src="/images/image 2.png" alt="alt logo"/>
+                  <img src="/images/Logo.svg" alt="alt logo"/>
                 </div>
               <div className="text-container">
               <h1 className="title">log in</h1>
@@ -97,7 +97,7 @@ function Login() {
                   log in
                 </button>
               </form>
-              <Link to="/signup">Don't have an account yet? Sign up here.</Link>
+              <Link to="/signup" className='link'>Don't have an account yet? Sign up here.</Link>
               </div>
             </div>
           </body>

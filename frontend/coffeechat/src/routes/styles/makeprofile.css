@@ -4,8 +4,8 @@
 
 input[type=text], [type=password] {
     border-radius: 12px;
-    background-color: #C59667;
-    color: #2f2017;
+    background-color: #f1efef;
+    color: rgb(83, 78, 75);
     border: 0.5vh solid #2f2017;
     font-family: 'Work Sans', sans-serif;
     font-size: 3.5vh;

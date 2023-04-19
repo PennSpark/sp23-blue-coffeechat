@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 import Header from './header';
 import Loading from './loading';
-/*import './styles/signup.css' */
+// import './styles/signup.css'
 import './styles/generic.css'
 
 function Signup() {
@@ -80,9 +80,9 @@ function Signup() {
               <div className="container">
                 <div className="logo">
                   <div className="coffeechat">
-                    CoffeeChat
+                    coffeechat
                   </div>
-                  <img src="/images/image 2.png" alt="alt logo"/>
+                  <img src="/images/Logo.svg" alt="alt logo"/>
                 </div>
                 <div className="text-container">
                 <h1 className="title">sign up</h1>
@@ -109,7 +109,7 @@ function Signup() {
                   </button>
                 </form>
                 <div className="login-text">
-                <Link to="/login">
+                <Link to="/login" className='link'>
                 Already have an account? Log in here.
                  </Link>
                  </div>

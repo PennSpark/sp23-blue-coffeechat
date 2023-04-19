@@ -1,17 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Lato:wght@700&display=swap');
  
-input[type=text], [type=password] {
-    border: none !important;
-    border-radius: 10px;
-    background-color: #D9D9D9;
-    color: #2f2017;
-    border: 0.5vh solid #2f2017;
-    font-family: 'Inter', sans-serif;
-    font-size: 3.5vh;
-    margin-top: 0.5vh;
-    padding: 0.3vh;
-    padding-left: 15px;
-    padding-right: 15px;
+.container {
+    background-color: #F5E1CD;
 }
 
 .signup-button {
