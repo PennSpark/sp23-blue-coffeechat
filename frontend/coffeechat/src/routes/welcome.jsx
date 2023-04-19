@@ -13,16 +13,17 @@ function Welcome() {
             </head>
             {/* This is the welcome page. */}
             <body>
-                <p></p> {/* Remove this if there's a weird whitespace above the header */}
                 <div className="welcome-container">
                     <div className="welcome-text">
-                    <p className="welcome-title">welcome to<span style={{ fontSize: "5.5vw" }}> </span><span><span>c</span>offeechat</span></p>
-                    <p className="subtitle">find your newest friendship today</p>
-                    <Link to="/signup">
-                        <button className="signup-button">join</button>
-                    </Link>
+                        <h1 className="welcome-title">welcome to <br></br>
+                            <span style={{fontSize: "1.07em"}}>c</span>offeechat
+                            <p className="subtitle">find your newest <br></br>friendship today</p>
+                            <Link to="/signup">
+                                <button className="signup-button">join</button>
+                            </Link>
+                        </h1>
                     </div>
-                    <img src="/images/image 1.png" alt="description of image"/>
+                    <img src="/images/Logo.svg" alt="description of image"/>
                 </div>
             </body>
         </  >
