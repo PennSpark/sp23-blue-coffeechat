@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/startmatch/', startmatch_view, name="startmatch_view"),
     path('api/checkmatch/', getismatched_view, name="getismatched_view"),
     path('api/checkauth/', checkauth_view, name="checkauth_view"),
+    path('api/getprofile/', getprofile_view, name="getprofile_view"),
 ]
 
 if settings.DEBUG:

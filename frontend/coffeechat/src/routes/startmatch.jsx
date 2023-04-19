@@ -12,12 +12,17 @@ function StartMatch() {
 
     const authRedirect = async () => {
         try {
-        const response = await axios.get('http://localhost:8000/api/checkauth/', { withCredentials: true});
-        if (!response.data.isAuth) {
-            navigate("/login")
-        }
+            const response = await axios.get('http://localhost:8000/api/checkauth/', { withCredentials: true});
+            if (!response.data.isAuth) {
+                navigate("/login")
+            }
+            const matchResponse = await axios.get('http://localhost:8000/api/checkmatch/', { withCredentials: true});
+            if (matchResponse.data.isMatched) {
+                console.log("here")
+                navigate("/match");
+            }
         } catch (error) {
-        console.error(error);
+            console.error(error);
         }
         setIsLoading(false);
     };

@@ -143,12 +143,29 @@ def startmatch_view(request):
 def getismatched_view(request):
     if request.user.is_authenticated:
         profile, _ = Profile.objects.get_or_create(user=request.user)
-
-        return JsonResponse({"isMatched": str(profile.isMatched)})
+        return JsonResponse({"isMatched": profile.isMatched})
     else:
-        return JsonResponse({"isMatched": "False"})
+        return JsonResponse({"isMatched": False})
 
 @csrf_exempt
 def checkauth_view(request):
     # If this isn't working, make sure you're passing { withCredentials: true } in with the axios get
     return JsonResponse({"isAuth": request.user.is_authenticated})
+
+@csrf_exempt
+def getprofile_view(request):
+    if request.user.is_authenticated:
+        req_profile, _ = Profile.objects.get_or_create(user=request.user)
+        partnerUsername = req_profile.partnerUsername
+        partnerProfile = Profile.objects.get(username_formatching=partnerUsername)
+        return JsonResponse({ "Success": True,
+                                "FirstName": partnerProfile.first_name,
+                                "LastName": partnerProfile.last_name,
+                                "Year": partnerProfile.year,
+                                "School": partnerProfile.school,
+                                "Instagram": partnerProfile.instagram,
+                                "Bio": partnerProfile.bio,
+                                "ImageLink": "http://localhost:8000/media/" + str(partnerProfile.image),
+                                "Email": partnerProfile.username_formatching})
+    else:
+        return JsonResponse({"Success": False})
