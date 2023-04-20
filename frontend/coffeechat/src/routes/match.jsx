@@ -130,9 +130,9 @@ function Match() {
             </head>
             <body>
                 <Header/>
-                <div>
-                    <p>Your match is ready!</p>
-                    <p>Are you ready?</p>
+                <div className='match-before-content'>
+                    <h1 className='heading-text'>Your match is ready!</h1>
+                    <h1 className='heading-text'>Are you?</h1>
                     <button onClick={() => activateMatch()}>Show Me!</button>
                 </div>
             </body>
@@ -148,18 +148,19 @@ function Match() {
             </head>
             <body>
                 <Header/>
-                <div>
-                    <p>Your match is...</p>
-                    <p>{ partnerFirstName }</p>
-                    <p>{ partnerLastName }</p>
-                    <p>{ partnerEmail }</p>
-                    <p>{ partnerYear }</p>
-                    <p>{ partnerSchool }</p>
-                    <Link to={ partnerInsta }>{ partnerInsta }</Link>
-                    <img src={ partnerImageLink }/>
-                    <p>{ partnerBio }</p>
-                    
-                 
+                <div className='full-profile'>
+                    <div className='match-after-content'>
+                        <h1 className='heading-text-match'>Your match is...</h1>
+                        <div className='profile-content'>
+                            <p>{ partnerFirstName } { partnerLastName }</p>
+                            <p>{ partnerEmail }</p>
+                            <p>{ partnerYear }</p>
+                            <p>{ partnerSchool }</p>
+                            <Link to={ partnerInsta }>{ partnerInsta }</Link>
+                            <p>{ partnerBio }</p>
+                        </div>
+                    </div>
+                    <img className="profile-image" src={ partnerImageLink }/>
                 </div>
             </body>
             </>
