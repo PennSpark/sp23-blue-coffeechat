@@ -213,3 +213,29 @@ textarea {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+/*
+StartMatch
+*/
+.body-text {
+    color: #2f2017;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25em;
+    margin-top: 15px;
+}
+
+.heading-text {
+    color: #2f2017;
+    font-family: 'Lato', sans-serif;
+    font-size: 2em;
+    margin-top: 10px;
+}
+
+.startmatch-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 7.5%
+}

@@ -58,12 +58,13 @@ function StartMatch() {
             </head>
             <body>
                 <Header/>
-                <div>
-                    <p className='heading-text'>Are you ready to find a new friend?</p>
-                    <p className='heading-text'>Press below and we'll randomly match you with another Penn student! The possibilities are endless.</p>
+                <div className='startmatch-content'>
+                    <div className='headers'>
+                        <p className='heading-text'>Are you ready to meet a new friend?</p>
+                        <p className='heading-text'>Press below, and we'll randomly match you with another Penn student.</p>
+                        <p className='heading-text'>The possibilities are endless!</p>
+                    </div>
                     <button className='submit-button' onClick={handleMatchStarted}>Start Brewing a New Friendship</button>
-                </div>
-                <div>
                     <p className='body-text'>Want to make changes to your profile? <Link to="/makeprofile">Update it here</Link></p>
                 </div>
             </body>
