@@ -5,8 +5,9 @@ import Header from "./header"
 function PageNotFound() {
     return(
         <>
-        <Header/>
-        <p className="heading-text">This page doesn't exist. Why not <Link to="/startmatch">head home?</Link></p>
+        <div className="match-before-content">
+            <h1 className="heading-text">This page doesn't exist. Why not <Link to="/startmatch">head home?</Link></h1>
+        </div>
         </>
     );
 }

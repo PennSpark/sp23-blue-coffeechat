@@ -53,6 +53,11 @@ function Login() {
         console.error(error.response.data);
       }
     };
+
+    const handleCoffeechat = async (event) => {
+      event.preventDefault();
+      navigate("/")
+  }
   
     return (
       <>
@@ -70,7 +75,7 @@ function Login() {
           <body>
             <div className="container">
             <div className="logo">
-                  <div className="coffeechat">
+                  <div className="coffeechat" onClick={handleCoffeechat}>
                     coffeechat
                   </div>
                   <img src="/images/Logo.svg" alt="alt logo"/>

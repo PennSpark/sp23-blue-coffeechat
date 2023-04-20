@@ -48,6 +48,7 @@ function Match() {
     const [partnerInsta, setPartnerInsta] = useState('');
     const [partnerBio, setPartnerBio] = useState('');
     const [partnerImageLink, setPartnerImageLink] = useState('');
+    const [isInstaBlank, setIsInstaBlank] = useState(false);
 
     const decodeSchool = (school) => {
         var fullName = '';
@@ -95,6 +96,15 @@ function Match() {
         setPartnerYear(schoolYear);
     }
 
+    const decodeInsta = (insta) => {
+        if (insta === "") {
+            setIsInstaBlank(true);
+        } else {
+            setPartnerInsta("https://www." + insta)
+        }
+    }
+
+
     const activateMatch = async () => {
         try {
             const response = await axios.get('http://localhost:8000/api/getprofile/', {withCredentials: true});
@@ -105,7 +115,7 @@ function Match() {
                 setPartnerEmail(data.Email);
                 decodeSchool(data.School);
                 decodeYear(data.Year);
-                setPartnerInsta("https://www." + data.Instagram);
+                decodeInsta(data.Instagram);
                 setPartnerBio(data.Bio);
                 setPartnerImageLink(data.ImageLink);
                 setReady(true);
@@ -156,7 +166,7 @@ function Match() {
                             <p>{ partnerEmail }</p>
                             <p>{ partnerYear }</p>
                             <p>{ partnerSchool }</p>
-                            <Link to={ partnerInsta }>{ partnerInsta }</Link>
+                            {isInstaBlank ? <></> : <Link to={ partnerInsta }>{ partnerInsta }</Link>}
                             <p>{ partnerBio }</p>
                         </div>
                     </div>

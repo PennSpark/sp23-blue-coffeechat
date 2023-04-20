@@ -197,7 +197,7 @@ function MakeProfile() {
                         value={bio}
                         onChange={(event) => setBio(event.target.value)}
                     />
-                    <label className="field-label" for="image">Profile Image (Square Dimensions Required)</label>
+                    <label className="field-label" for="image">Profile Image (small square recommended)</label>
                     <label for="image-upload" className="custom-file-upload">
                     <input
                       name="image"

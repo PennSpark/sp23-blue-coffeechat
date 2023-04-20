@@ -3,6 +3,7 @@
 
 body {
     font-size: 100%;
+    background-color: #F5E1CD;
 }
  
  .signup-button {
@@ -36,10 +37,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 10vw;
+    padding-left: 25vw;
     padding-right: 10vw;
-    margin-top: 15vh;
-    margin-bottom: 15vh;
+    padding-bottom: 100vh;
+    height: 1000%;
 }
 
 .welcome-text {
@@ -66,3 +67,69 @@ img {
 .welcome-title::before {
     text-shadow: -1px 0 0 rgba(0, 0, 0, .2);   
 } 
+
+#welcome-container {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#welcome-text {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#welcome-title {
+    
+    color: #2f2017;
+    font-family: 'Lato';
+    font-style: bold;
+    font-weight: 4000; 
+    font-size: 4.5em;
+}
+
+#welcome-title::before {
+    text-shadow: -1px 0 0 rgba(0, 0, 0, .2);   
+}
+
+#welcome-subtitle {
+    color: #3C250F;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 3000;
+    font-size: 0.6em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#welcome-button {
+    border: 10px !important;
+    border-radius: 15px !important;
+    transition-duration: 0.2s;
+    background-color: #ffffff !important; 
+    color: #2f2017 !important;
+    font-family: 'Lato', sans-serif !important;
+    font-size: 1em !important;
+    margin-top: 0.5vh !important;
+    padding: 0.3vh !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    width: fit-content !important;  
+}
+
+#welcome-button:hover {
+    background-color: #f6eee1 !important;
+    color: #3C250F !important;
+}
+
+#welcome-logo {
+    padding: 0;
+    scale: 0.9;
+}

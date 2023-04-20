@@ -12,18 +12,18 @@ function Welcome() {
                 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Work+Sans:wght@500&display=swap" rel="stylesheet"/>
             </head>
             {/* This is the welcome page. */}
-            <body>
-                <div className="welcome-container">
-                    <div className="welcome-text">
-                        <h1 className="welcome-title">welcome to <br></br>
-                            <span style={{fontSize: "1.07em"}}>c</span>offeechat
-                            <p className="subtitle">find your newest <br></br>friendship today</p>
+            <body id="welcome-body">
+                <div className="welcome-container" id="welcome-container">
+                    <div className="welcome-text" id="welcome-text">
+                        <h1 className="welcome-title" id="welcome-title">welcome to  
+                            <p> </p><span style={{fontSize: "1.07em"}}>c</span>offeechat
+                            <p className="subtitle" id="welcome-subtitle">find your newest friendship today</p>
                             <Link to="/signup">
-                                <button className="signup-button">join</button>
+                                <button className="welcome-button" id="welcome-button">join</button>
                             </Link>
                         </h1>
                     </div>
-                    <img src="/images/Logo.svg" alt="description of image"/>
+                    <img src="/images/Logo.svg" alt="description of image" id="welcome-logo"/>
                 </div>
             </body>
         </  >
