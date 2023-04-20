@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 481.18 354">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #3c250f;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #ebc9a7;
+      }
+
+      .cls-4 {
+        stroke: #000;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" x="327.68" y="150.82" width="151" height="52" rx="20" ry="20"/>
+  <ellipse class="cls-1" cx="240.18" cy="177" rx="179" ry="177"/>
+  <ellipse class="cls-2" cx="240.18" cy="177" rx="163" ry="161"/>
+  <path class="cls-4" d="m384.68,177c0,78.69-64.69,142.5-144.5,142.5s-144.5-63.81-144.5-142.5S160.37,34.5,240.18,34.5s144.5,63.81,144.5,142.5Z"/>
+  <path class="cls-2" d="m89.07,236.87L240.02,87.46l55.8,55.22-152.53,150.93-54.22-56.73h0Z"/>
+  <path class="cls-2" d="m339.74,295.45l51.06-61.18-108.03-104.69-55.33,54.75,112.31,111.12h-.01Z"/>
+  <ellipse class="cls-3" cx="167.34" cy="213.73" rx="28.26" ry="27.59"/>
+  <ellipse class="cls-3" cx="312.86" cy="213.73" rx="28.26" ry="27.59"/>
+  <ellipse class="cls-3" cx="240.22" cy="149.24" rx="28.26" ry="27.59"/>
+</svg>

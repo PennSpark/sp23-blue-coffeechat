@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, redirect, useNavigate} from 'react-router-dom';
 import Header from './header';
 import Loading from './loading';
-import './styles/match.css'
+import './styles/generic.css'
 
 function Match() {    
     const navigate = useNavigate();
@@ -174,12 +174,13 @@ function Match() {
             </head>
             <body>
                 <Header/>
-                <div>
-                    <p>Your friendship is brewing...</p>
-                    <p>We'll let you know when it's ready!</p>
-                </div>
-                <div>
+                <div className='match-before-content'>
+                    <div className='headers'>
+                        <h1 className='heading-text'>Your friendship is brewing...</h1>
+                        <h1 className='heading-text'>We'll let you know when it's ready!</h1>
+                    </div>
                     <p className='body-text'>Want to make changes to your profile? <Link to="/makeprofile">Update it here</Link></p>
+                    <Loading/>
                 </div>
             </body>
             </>
