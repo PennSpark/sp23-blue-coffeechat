@@ -25,7 +25,6 @@ def match_profiles(db_file):
 
     # Discard last profile if the total number of profiles is odd
     if len(matched_profiles) % 2 != 0:
-        print("oh fuck")
         matched_profiles.pop()
 
     # Shuffle the matched_profiles list

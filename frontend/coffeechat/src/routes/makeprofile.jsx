@@ -129,8 +129,8 @@ function MakeProfile() {
                         value={firstName}
                         onChange={(event) => setFirstName(event.target.value)}
                     /><br></br>
-                    {lastNameError && <label className="error-label">Please enter your last name.</label>}
                     <label className="field-label" for="lastname">Last Name<span className='required-field'>*</span></label><br></br>
+                    {lastNameError && <label className="error-label">Please enter your last name.</label>}<br></br>
                     <input
                         name="lastname"
                         type="text"
@@ -138,8 +138,8 @@ function MakeProfile() {
                         value={lastName}
                         onChange={(event) => setLastName(event.target.value)}
                     /><br></br>
-                    {yearSchoolError && <label className="error-label">Incompatible school choice. Please try again.</label>}
                     <label className="field-label" for="academic_year">Academic Year</label>
+                    {yearSchoolError && <label className="error-label">Incompatible school choice. Please try again.</label>}
                     <select 
                         name="academic_year" 
                         className="drop-down" 
@@ -179,8 +179,8 @@ function MakeProfile() {
                         </>
                       )}
                   </select>
-                  {instaError && <label className="error-label">Please enter a correctly formatted Instagram link (e.g., "instagram.com/coffeechat-penn").</label>}
                   <label className='field-label' for="instagram">Instagram</label>
+                  {instaError && <label className="error-label">Please enter a correctly formatted Instagram link (e.g., "instagram.com/coffeechat-penn").</label>}
                   <input
                         name="instagram"
                         type="text"
