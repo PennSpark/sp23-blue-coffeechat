@@ -95,6 +95,10 @@ img {
     font-size: 4.5em;
 }
 
+#welcome-title span {
+    font-size: 0.9em;
+}
+
 #welcome-title::before {
     text-shadow: -1px 0 0 rgba(0, 0, 0, .2);   
 }

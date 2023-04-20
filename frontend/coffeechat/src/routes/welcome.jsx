@@ -15,7 +15,7 @@ function Welcome() {
             <body id="welcome-body">
                 <div className="welcome-container" id="welcome-container">
                     <div className="welcome-text" id="welcome-text">
-                        <h1 className="welcome-title" id="welcome-title">welcome to  
+                        <h1 className="welcome-title" id="welcome-title"><span>welcome to</span>  
                             <p> </p><span style={{fontSize: "1.07em"}}>c</span>offeechat
                             <p className="subtitle" id="welcome-subtitle">find your newest friendship today</p>
                             <Link to="/signup">
