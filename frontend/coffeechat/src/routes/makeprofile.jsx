@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Link, redirect, useNavigate} from 'react-router-dom';
 import Header from './header';
 import Loading from './loading';
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
 // import './styles/makeprofile.css'
 import './styles/generic.css'
 
@@ -25,6 +27,50 @@ function MakeProfile() {
     const [instaError, setInstaError] = useState(false);
 
     const [isLoading, setIsLoading] = useState(true);
+
+    const [crop, setCrop] = useState({ x: 0, y: 0 });
+    const [zoom, setZoom] = useState(1);
+    const [croppedImage, setCroppedImage] = useState(null);
+
+    const handleCropComplete = async (croppedArea, croppedAreaPixels) => {
+      try {
+        const croppedImg = await getCroppedImg(image, croppedAreaPixels);
+        setCroppedImage(croppedImg);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    const getCroppedImg = (image, croppedAreaPixels) => {
+      const canvas = document.createElement('canvas');
+      const scaleX = image.naturalWidth / image.width;
+      const scaleY = image.naturalHeight / image.height;
+      canvas.width = croppedAreaPixels.width;
+      canvas.height = croppedAreaPixels.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(
+        image,
+        croppedAreaPixels.x * scaleX,
+        croppedAreaPixels.y * scaleY,
+        croppedAreaPixels.width * scaleX,
+        croppedAreaPixels.height * scaleY,
+        0,
+        0,
+        croppedAreaPixels.width,
+        croppedAreaPixels.height
+      );
+      const croppedImg = canvas.toDataURL('image/jpeg', 0.8); // quality: 80%
+      return croppedImg;
+    };
+
+    const handleImageChange = (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        setImage(reader.result);
+      });
+      reader.readAsDataURL(file);
+    };
 
     const authRedirect = async () => {
         try {
@@ -56,7 +102,7 @@ function MakeProfile() {
         formData.append('year', year);
         formData.append('school', school);
         formData.append('instagram', instagram);
-        formData.append('image', image);
+        formData.append('image', croppedImage);
   
       const response = await axios.post('http://localhost:8000/api/makeprofile/', formData, { withCredentials: true });
       console.log(response.data);
@@ -203,10 +249,21 @@ function MakeProfile() {
                       name="image"
                       type="file"
                       id="image-upload"
-                      onChange={(event) => setImage(event.target.files[0])}
+                      onChange={handleImageChange}
                     />
                     Upload
                     </label>
+                    {image && (
+                      <ReactCrop
+                        src={image}
+                       crop={crop}
+                        onChange={setCrop}
+                        onComplete={handleCropComplete}
+                        />
+                       )}
+                     {croppedImage && (
+                     <img src={croppedImage} alt="Cropped Image" />
+                       )}
                     
                     <button type="submit" className="submit-button">
                         save profile
